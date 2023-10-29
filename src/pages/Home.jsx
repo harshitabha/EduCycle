@@ -52,6 +52,7 @@ const Home = (props) => {
                                 key={index}
                                 bookName={card.bookName}
                                 isbn={card.isbn}
+                                imgSrc={card.imgSrc}
                                 condition={card.condition}
                                 price={card.price}/>
                     )}) : <NoListing />}

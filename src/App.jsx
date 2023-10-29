@@ -26,7 +26,6 @@ function App() {
   console.log(listing);
 
   const handleFormChange = (e) => {
-    console.log("Hello", e.target);
     // update the current listing
     setNewListing((currLisiting) => ({
       ...currLisiting,
@@ -42,7 +41,6 @@ function App() {
     ]))
 
     // reset the new listing
-    console.log(newListing);
     setNewListing((curr) => ({
       ...curr,
       bookName: '',

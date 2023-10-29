@@ -4,6 +4,7 @@ import "./Listing.css"
 const Listing = (props) => {
     return (
         <div className="listing-card">
+            {console.log(props.imgSrc)}
             <img 
                 src={props.imgSrc ? props.imgSrc : "https://placehold.co/150x200"} 
                 alt="placeholder-img"
