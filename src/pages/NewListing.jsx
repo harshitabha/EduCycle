@@ -17,8 +17,8 @@ const NewListing = (props) => {
                         inputLable="Textbook Name"
                         placeholder="Name"
                         id="bookName" 
-                        name="bookName" 
                         handleChange={props.handleChange}
+                        name="bookName" 
                         value={props.bookName}/>
 
                     <TextInput 
@@ -26,6 +26,7 @@ const NewListing = (props) => {
                         placeholder="###-##-#####-##-#"
                         id="isbn" 
                         handleChange={props.handleChange}
+                        name="isbn"
                         value={props.isbn}/>
                 </div>
 
@@ -33,7 +34,7 @@ const NewListing = (props) => {
                     <div className="form-div">
                         <label htmlFor="sub-select" className="form-lable form-text">Subject</label>
                         <select 
-                            name="sub-select" 
+                            name="subject" 
                             id="sub-select" 
                             className="form-text form-input select" 
                             onChange={(e) => {props.handleChange(e)}}
@@ -48,7 +49,7 @@ const NewListing = (props) => {
                     <div className="quality-info form-div">
                         <label htmlFor="condition" className="form-lable form-text ">Condition</label>
                         <select 
-                            name="quality-select" 
+                            name="condition" 
                             id="condition" 
                             className="form-text select form-input" 
                             onChange={(e) => {props.handleChange(e)}}
@@ -68,17 +69,18 @@ const NewListing = (props) => {
                         placeholder="Ex: CSE 101"
                         id="course" 
                         handleChange={props.handleChange}
-                        value={props.course}/>
+                        value={props.course}
+                        name="course"/>
                         
                     <TextInput 
                         inputLable="Price"
                         id="price"
                         pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" 
                         placeholder="$100.00"
-                        value="" 
                         data-type="currency"  
                         handleChange={props.handleChange}
-                        value={props.price}/>
+                        value={props.price}
+                        name="price"/>
                         
                 </div>
                 <TextInput 
@@ -86,6 +88,7 @@ const NewListing = (props) => {
                     placeholder="Ex: https://photos.google.com"
                     classes="long-input"
                     id="imgSrc"
+                    name="imgSrc"
                     handleChange={props.handleChange}
                     value={props.imgSrc} />
 
@@ -94,6 +97,7 @@ const NewListing = (props) => {
                     placeholder="Add any notes here"
                     classes="long-input"
                     id="desc"
+                    name="desc"
                     handleChange={props.handleChange}
                     value={props.description}/>
                     

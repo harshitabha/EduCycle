@@ -7,7 +7,7 @@ import Navbar from './components/Navbar';
 
 
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function App() {
   const navigator = useNavigate();
@@ -42,7 +42,8 @@ function App() {
     ]))
 
     // reset the new listing
-    /*setNewListing((curr) => ({
+    console.log(newListing);
+    setNewListing((curr) => ({
       ...curr,
       bookName: '',
       isbn: '',
@@ -52,8 +53,7 @@ function App() {
       price: '',
       imgSrc: '',
       description: '',
-    }));*/
-    console.log(newListing)
+    }));
 
     // go to home
     navigator("/home");

@@ -9,6 +9,7 @@ const TextInput = (props) => {
                 className={`text-input form-text form-input ${props.classes}`}
                 placeholder={props.placeholder}
                 value={props.value}
+                name={props.name}
                 onChange={(e) => {props.handleChange(e)}} />
         </div>
     );

@@ -5,7 +5,7 @@ const Listing = (props) => {
     return (
         <div className="listing-card">
             <img 
-                src="https://placehold.co/150x200" 
+                src={props.imgSrc ? props.imgSrc : "https://placehold.co/150x200"} 
                 alt="placeholder-img"
                 className="card-img" />
             <div className="card-info">
