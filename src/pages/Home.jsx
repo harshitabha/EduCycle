@@ -46,7 +46,7 @@ const Home = (props) => {
                 </div>
 
                 <div className="card-container">
-                    {props.cards && props.cards.length() !== 0 ? props.cards.map((card, index) => {
+                    {props.cards && props.cards.length !== 0 ? props.cards.map((card, index) => {
                         return (
                             <Listing 
                                 key={index}

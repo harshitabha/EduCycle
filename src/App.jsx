@@ -11,7 +11,7 @@ import { useState } from 'react';
 function App() {
   const nav = useNavigate();
 
-  const [listing, setListing] = useState(null);
+  const [listing, setListing] = useState([]);
 
   const handleFormSubmit = (e) => {
     updateListings();
