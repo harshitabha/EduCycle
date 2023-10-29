@@ -6,7 +6,7 @@ const TextInput = (props) => {
             <input 
                 type="text" 
                 id={`input-field-${props.id}`}
-                className="text-input form-text form-input"
+                className={`text-input form-text form-input ${props.classes}`}
                 placeholder={props.placeholder} />
         </div>
     );

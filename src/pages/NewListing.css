@@ -29,8 +29,11 @@
     justify-content: space-between;
 }
 
-#input-field-desc {
+.long-input {
     width: 80vw;
+}
+
+#input-field-desc {
     height: 20vh;
 }
 

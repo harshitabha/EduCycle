@@ -16,7 +16,7 @@ const NewListing = (props) => {
                     <TextInput 
                         inputLable="Textbook Name"
                         placeholder="Name"
-                        id="name" />
+                        id="bookName" />
                     <TextInput 
                         inputLable="ISBN"
                         placeholder="###-##-#####-##-#"
@@ -34,9 +34,9 @@ const NewListing = (props) => {
                         </select>
                     </div>
                     <div className="quality-info form-div">
-                        <label htmlFor="quality-select" className="form-lable form-text ">Quality</label>
-                        <select name="quality-select" id="quality-select" className="form-text select form-input">
-                            <option defaultChecked="Quality of Book" value="default" hidden>Quality of Book</option>
+                        <label htmlFor="condition" className="form-lable form-text ">Condition</label>
+                        <select name="quality-select" id="condition" className="form-text select form-input">
+                            <option defaultChecked="Condition of Book" value="default" hidden>Condition of Book</option>
                             {filters.condition.map(con => {
                                 return <option value={con} key={con}>{con}</option>
                             })}
@@ -54,10 +54,16 @@ const NewListing = (props) => {
                         id="prof" />
                 </div>
                 <TextInput 
+                    inputLable="Image Url"
+                    placeholder="Image Url"
+                    classes="long-input"
+                    id="imgSrc" />
+
+                <TextInput 
                     inputLable="Description"
                     placeholder="Add any notes here"
+                    classes="long-input"
                     id="desc" />
-
                 <input 
                     type="submit" 
                     name="addListing" 
