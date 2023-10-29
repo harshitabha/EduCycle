@@ -11,7 +11,7 @@ import { useState } from 'react';
 function App() {
   const nav = useNavigate();
 
-  const [listing, setListing] = useState([]);
+  const [listing, setListing] = useState(null);
 
   const handleFormSubmit = (e) => {
     updateListings();
@@ -43,10 +43,6 @@ function App() {
           </Route>
           {/* Temp Routes*/}
           <Route path="/newListing" element={<NewListing handleSubmit={handleFormSubmit}/>} />
-          {/* <Route path="/user" element={}>
-            <Route path="/user/settings" element={} />
-            <Route path="/user/listing" element={} />
-          </Route> */}
         </Routes>
     </>
   );

@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-// import SearchBar from "../components/SearchBar";
-// import { useState } from "react";
 
 import { Link } from "react-router-dom";
 import Checkboxes from "../components/Checkboxes";
@@ -48,7 +46,7 @@ const Home = (props) => {
                 </div>
 
                 <div className="card-container">
-                    {props.cards && props.cards !== 0 ? props.cards.map((card, index) => {
+                    {props.cards && props.cards.length() !== 0 ? props.cards.map((card, index) => {
                         return (
                             <Listing 
                                 key={index}
