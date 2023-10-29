@@ -5,32 +5,58 @@ import Home from './pages/Home';
 import NewListing from './pages/NewListing';
 import Navbar from './components/Navbar';
 
+
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const nav = useNavigate();
+  const navigator = useNavigate();
 
   const [listing, setListing] = useState([]);
+  const [newListing, setNewListing] = useState({
+    bookName: '',
+    isbn: '',
+    subject: '',
+    condition: '',
+    course: '',
+    price: '',
+    imgSrc: '',
+    description: '',
+  });
+  console.log(listing);
 
-  const handleFormSubmit = (e) => {
-    updateListings();
-    nav("/");
+  const handleFormChange = (e) => {
+    console.log("Hello", e.target);
+    // update the current listing
+    setNewListing((currLisiting) => ({
+      ...currLisiting,
+      [e.target.name]: [e.target.value]
+    }));
   }
 
-  const updateListings = () => {
-    const newListing = {
+  const handleSubmit = () => {
+    // update the list of all listings
+    setListing((prevListings) => ([
+      ...prevListings,
+      newListing
+    ]))
+
+    // reset the new listing
+    /*setNewListing((curr) => ({
+      ...curr,
       bookName: '',
       isbn: '',
+      subject: '',
       condition: '',
+      course: '',
       price: '',
-      imgSrc: ''
-    };
+      imgSrc: '',
+      description: '',
+    }));*/
+    console.log(newListing)
 
-    setListing((prevListing) => [
-      ...prevListing,
-      newListing
-    ])
+    // go to home
+    navigator("/home");
   }
 
   return (
@@ -38,11 +64,12 @@ function App() {
       {/* Add the page components here as created */}
         <Navbar  />
         <Routes>
-          <Route path="/" element={<Home cards={listing}/>}>
-            {/* <Route path="/home/key:" element={<Listing />} /> */}
-          </Route>
+          <Route path="/" element={<Home cards={listing}/>} />
+          <Route path="/home" element={<Home cards={listing}/> } />
           {/* Temp Routes*/}
-          <Route path="/newListing" element={<NewListing handleSubmit={handleFormSubmit}/>} />
+          <Route path="/newListing" element={<NewListing 
+                                              handleChange={handleFormChange}
+                                              handleSubmit={handleSubmit}/>} />
         </Routes>
     </>
   );

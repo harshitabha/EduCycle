@@ -17,19 +17,27 @@ const NewListing = (props) => {
                         inputLable="Textbook Name"
                         placeholder="Name"
                         id="bookName" 
-                        handleSubmit={props.handleSubmit}/>
+                        name="bookName" 
+                        handleChange={props.handleChange}
+                        value={props.bookName}/>
 
                     <TextInput 
                         inputLable="ISBN"
                         placeholder="###-##-#####-##-#"
                         id="isbn" 
-                        handleSubmit={props.handleSubmit}/>
+                        handleChange={props.handleChange}
+                        value={props.isbn}/>
                 </div>
 
                 <div className="row">
                     <div className="form-div">
                         <label htmlFor="sub-select" className="form-lable form-text">Subject</label>
-                        <select name="sub-select" id="sub-select" className="form-text form-input select" onSubmit={(e) => {props.handleSubmit(e)}}>
+                        <select 
+                            name="sub-select" 
+                            id="sub-select" 
+                            className="form-text form-input select" 
+                            onChange={(e) => {props.handleChange(e)}}
+                            value={props.subject}>
                             <option defaultChecked="Select a Subject" value="default" hidden>Select a Subject</option>
                             {filters.subject.map(subject => {
                                 return <option value={subject} key={subject}>{subject}</option>
@@ -43,7 +51,8 @@ const NewListing = (props) => {
                             name="quality-select" 
                             id="condition" 
                             className="form-text select form-input" 
-                            onSubmit={(e) => {props.handleSubmit(e)}}>
+                            onChange={(e) => {props.handleChange(e)}}
+                            value={props.condition}>
                             <option defaultChecked="Condition of Book" value="default" hidden>Condition of Book</option>
                             {filters.condition.map(con => {
                                 return <option value={con} key={con}>{con}</option>
@@ -56,35 +65,42 @@ const NewListing = (props) => {
                 <div className="row">
                     <TextInput 
                         inputLable="Course"
-                        placeholder="Course used in"
+                        placeholder="Ex: CSE 101"
                         id="course" 
-                        handleSubmit={props.handleSubmit}/>
+                        handleChange={props.handleChange}
+                        value={props.course}/>
                         
                     <TextInput 
-                        inputLable="Professor"
-                        placeholder="Professor Name"
-                        id="prof" 
-                        handleSubmit={props.handleSubmit}/>
+                        inputLable="Price"
+                        id="price"
+                        pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" 
+                        placeholder="$100.00"
+                        value="" 
+                        data-type="currency"  
+                        handleChange={props.handleChange}
+                        value={props.price}/>
                         
                 </div>
                 <TextInput 
                     inputLable="Image Url"
-                    placeholder="Image Url"
+                    placeholder="Ex: https://photos.google.com"
                     classes="long-input"
-                    id="imgSrc" />
+                    id="imgSrc"
+                    handleChange={props.handleChange}
+                    value={props.imgSrc} />
 
                 <TextInput 
                     inputLable="Description"
                     placeholder="Add any notes here"
                     classes="long-input"
-                    id="desc" 
-                    handleSubmit={props.handleSubmit}/>
+                    id="desc"
+                    handleChange={props.handleChange}
+                    value={props.description}/>
                     
-                <input 
-                    type="submit" 
-                    name="addListing" 
+                <button 
                     className="submit-add-listing form-text"
-                    onSubmit={(e) => {props.handleSubmit(e)}} />
+                    onClick={props.handleSubmit}
+                    type="button">Add Listing</button>
             </form>
         </>
     );
