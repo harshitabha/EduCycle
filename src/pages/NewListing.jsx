@@ -1,23 +1,12 @@
+/* eslint-disable react/prop-types */
 import TextInput from "../components/TextInput";
 import FILTERS from "./filters";
 
-import { useState } from "react";
 import "./form.css";
 import "./NewListing.css";
-const NewListing = () => {
+const NewListing = (props) => {
     const filters = JSON.parse(FILTERS);
     
-    const [bookInfo, setBookInfo] = useState({
-        bookName: '',
-        isbn: 0,
-        condition: "",
-        course: "",
-        subject: "",
-        professor: "",
-        description: "",
-    });
-
-
     return (
         <>
             {/* <Navbar /> */}
@@ -27,49 +16,95 @@ const NewListing = () => {
                     <TextInput 
                         inputLable="Textbook Name"
                         placeholder="Name"
-                        id="name" />
+                        id="bookName" 
+                        handleChange={props.handleChange}
+                        name="bookName" 
+                        value={props.bookName}/>
+
                     <TextInput 
                         inputLable="ISBN"
                         placeholder="###-##-#####-##-#"
-                        id="isbn" />
+                        id="isbn" 
+                        handleChange={props.handleChange}
+                        name="isbn"
+                        value={props.isbn}/>
                 </div>
 
                 <div className="row">
                     <div className="form-div">
                         <label htmlFor="sub-select" className="form-lable form-text">Subject</label>
-                        <select name="sub-select" id="sub-select" className="form-text form-input select">
+                        <select 
+                            name="subject" 
+                            id="sub-select" 
+                            className="form-text form-input select" 
+                            onChange={(e) => {props.handleChange(e)}}
+                            value={props.subject}>
                             <option defaultChecked="Select a Subject" value="default" hidden>Select a Subject</option>
                             {filters.subject.map(subject => {
                                 return <option value={subject} key={subject}>{subject}</option>
                             })}
                         </select>
+                        
                     </div>
                     <div className="quality-info form-div">
-                        <label htmlFor="quality-select" className="form-lable form-text ">Quality</label>
-                        <select name="quality-select" id="quality-select" className="form-text select form-input">
-                            <option defaultChecked="Quality of Book" value="default" hidden>Quality of Book</option>
+                        <label htmlFor="condition" className="form-lable form-text ">Condition</label>
+                        <select 
+                            name="condition" 
+                            id="condition" 
+                            className="form-text select form-input" 
+                            onChange={(e) => {props.handleChange(e)}}
+                            value={props.condition}>
+                            <option defaultChecked="Condition of Book" value="default" hidden>Condition of Book</option>
                             {filters.condition.map(con => {
                                 return <option value={con} key={con}>{con}</option>
                             })}
+                            
                         </select>
+                        
                     </div>
                 </div>
                 <div className="row">
                     <TextInput 
                         inputLable="Course"
-                        placeholder="Course used in"
-                        id="course" />
+                        placeholder="Ex: CSE 101"
+                        id="course" 
+                        handleChange={props.handleChange}
+                        value={props.course}
+                        name="course"/>
+                        
                     <TextInput 
-                        inputLable="Professor"
-                        placeholder="Professor Name"
-                        id="prof" />
+                        inputLable="Price"
+                        id="price"
+                        pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" 
+                        placeholder="$100.00"
+                        data-type="currency"  
+                        handleChange={props.handleChange}
+                        value={props.price}
+                        name="price"/>
+                        
                 </div>
+                <TextInput 
+                    inputLable="Image Url"
+                    placeholder="Ex: https://photos.google.com"
+                    classes="long-input"
+                    id="imgSrc"
+                    name="imgSrc"
+                    handleChange={props.handleChange}
+                    value={props.imgSrc} />
+
                 <TextInput 
                     inputLable="Description"
                     placeholder="Add any notes here"
-                    id="desc" />
-
-                <input type="submit" name="addListing" className="submit-add-listing form-text" />
+                    classes="long-input"
+                    id="desc"
+                    name="desc"
+                    handleChange={props.handleChange}
+                    value={props.description}/>
+                    
+                <button 
+                    className="submit-add-listing form-text"
+                    onClick={props.handleSubmit}
+                    type="button">Add Listing</button>
             </form>
         </>
     );
